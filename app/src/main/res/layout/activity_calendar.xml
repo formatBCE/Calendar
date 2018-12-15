@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:agendaCalendar="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CalendarActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/activity_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/theme_primary_dark" />
+
+    <com.rilixtech.agendacalendarview.AgendaCalendarView
+        android:id="@+id/agenda_calendar_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/windowBackground"
+        agendaCalendar:agendaCurrentDayTextColor="@color/colorPrimary"
+        agendaCalendar:calendarColor="@color/colorPrimary"
+        agendaCalendar:calendarCurrentDayTextColor="@color/textColorPrimary"
+        agendaCalendar:calendarDayTextColor="@android:color/white"
+        agendaCalendar:calendarHeaderColor="@color/colorPrimaryDark"
+        agendaCalendar:calendarPastDayTextColor="@color/textColorSecondary"
+        agendaCalendar:fabColor="@color/colorAccent"/>
+
+</LinearLayout>

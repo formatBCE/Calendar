@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Календар</string>
+
+    <string name="agenda_event_no_events">Події відсутні</string>
+
+</resources>
