@@ -30,16 +30,13 @@ public class CalendarActivity extends AppCompatActivity implements CalendarPicke
 
     private static final String LOG_TAG = CalendarActivity.class.getSimpleName();
 
-    private Toolbar mToolbar;
-    private AgendaCalendarView mAgendaCalendarView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
-        mToolbar = findViewById(R.id.activity_toolbar);
-        mAgendaCalendarView = findViewById(R.id.agenda_calendar_view);
+        Toolbar mToolbar = findViewById(R.id.activity_toolbar);
+        AgendaCalendarView mAgendaCalendarView = findViewById(R.id.agenda_calendar_view);
         setSupportActionBar(mToolbar);
 
         mToolbar.setTitleTextColor(getResources().getColor(android.R.color.white));

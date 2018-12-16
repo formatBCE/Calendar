@@ -8,13 +8,10 @@ import com.andrukhiv.calendar.database.DbAdapter;
 
 public class AppController extends Application {
 
-    DbAdapter mDbHelper;
-
     @Override
     public void onCreate() {
         super.onCreate();
-
-        mDbHelper = DbAdapter.getInstance(getApplicationContext());
+        DbAdapter mDbHelper = DbAdapter.getInstance(getApplicationContext());
         mDbHelper.createDatabase();
         mDbHelper.open();
     }

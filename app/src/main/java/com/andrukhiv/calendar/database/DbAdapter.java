@@ -19,7 +19,7 @@ public class DbAdapter {
 
     private static final String TAG = "DbAdapter";
 
-    private static SQLiteDatabase mDb;
+    private SQLiteDatabase mDb;
     private DbHelper mDbHelper;
 
     @SuppressLint("StaticFieldLeak")
@@ -34,24 +34,22 @@ public class DbAdapter {
     }
 
 
-    public DbAdapter(Context context) {
-        Context mContext = context;
-        mDbHelper = new DbHelper(mContext);
+    private DbAdapter(Context context) {
+        mDbHelper = new DbHelper(context);
     }
 
 
-    public DbAdapter createDatabase() throws SQLException {
+    public void createDatabase() throws SQLException {
         try {
             mDbHelper.createDataBase();
         } catch (IOException mIOException) {
             Log.e(TAG, mIOException.toString() + "  UnableToCreateDatabase");
             throw new Error("UnableToCreateDatabase");
         }
-        return this;
     }
 
 
-    public DbAdapter open() throws SQLException {
+    public void open() throws SQLException {
         try {
             mDbHelper.openDataBase();
             mDbHelper.close();
@@ -60,7 +58,6 @@ public class DbAdapter {
             Log.e(TAG, "open >>" + mSQLException.toString());
             throw mSQLException;
         }
-        return this;
     }
 
 
@@ -69,7 +66,7 @@ public class DbAdapter {
     }
 
 
-    public static ArrayList<CalendarEvent> getCalendarEvents() {
+    public ArrayList<CalendarEvent> getCalendarEvents() {
 
         ArrayList<CalendarEvent> result = new ArrayList<>();
         String sql = "SELECT * FROM " + CalendarTable.CALENDAR_NAME_TABLE;

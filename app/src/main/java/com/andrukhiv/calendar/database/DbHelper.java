@@ -24,18 +24,18 @@ public class DbHelper extends SQLiteOpenHelper {
     private final Context mContext;
 
 
-    public DbHelper(Context context) {
+    DbHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
         if (android.os.Build.VERSION.SDK_INT >= 21) {
             DB_PATH = context.getApplicationInfo().dataDir + "/databases/";
         } else {
-            DB_PATH = "/data/data/" + context.getPackageName() + "/databases/";
+            DB_PATH = context.getFilesDir().getAbsolutePath() + "/databases/";
         }
         this.mContext = context;
     }
 
 
-    public void createDataBase() throws IOException {
+    void createDataBase() throws IOException {
         // Если база данных не существует, скопируйте ее из assests
 
         boolean mDataBaseExist = checkDataBase();
@@ -78,7 +78,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
 
     // Откройте базу данных, чтобы мы могли ее запросить.
-    public void openDataBase() throws SQLException {
+    void openDataBase() throws SQLException {
         String mPath = DB_PATH + DB_NAME;
         //Log.v("mPath", mPath);
         mDataBase = SQLiteDatabase.openDatabase(mPath, null, SQLiteDatabase.CREATE_IF_NECESSARY);
